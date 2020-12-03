@@ -3,6 +3,7 @@ import bqtest.service.impl.MemberFileProcessorImpl;
 import bqtest.web.FileController;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +33,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 //@SpringBootTest
@@ -54,6 +56,11 @@ public class FileControllerTests {
 //    public void setup() {
 //        mockMvc = MockMvcBuilders.standaloneSetup(fileController).build();
 //    }
+@Before
+public void setup() {
+    initMocks(this);
+    this.mockMvc = MockMvcBuilders.standaloneSetup(fileController).build();
+}
 
     @Test
     public void testLoadData() throws Exception {
