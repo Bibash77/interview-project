@@ -21,6 +21,7 @@ public class MemberFileProcessorImpl extends MemberFileProcessor {
         return new MemberImporterImpl();
     }
 
+    // todo write test case
     @Override
     protected List<Member> getNonDuplicateMembers(List<Member> membersFromFile) {
         List<Member> list = new ArrayList();
@@ -44,6 +45,7 @@ public class MemberFileProcessorImpl extends MemberFileProcessor {
         return list;
     }
 
+    // todo write test case
     @Override
     protected Map<String, List<Member>> splitMembersByState(List<Member> validMembers) {
         List<String> stateList = new ArrayList();
