@@ -1,31 +1,41 @@
 import bqtest.service.Member;
 import bqtest.service.MemberFileProcessor;
 import bqtest.service.MemberImporter;
+import bqtest.service.impl.MemberFileProcessorImpl;
+import bqtest.web.FileController;
+import org.apache.catalina.mapper.Mapper;
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
+@SpringBootTest
 public class MemberImporterTests {
 
-    @Autowired
-    MemberImporter memberImporter;
 
-    @Autowired
-    MemberFileProcessor memberFileProcessor;
+    private FileController fileController;
+/*
+    private final MemberFileProcessor memberFileProcessor = new MemberFileProcessorImpl();
 
-    @Value("${config.file-to-load-test}")
-    private String filepath;
+    @Value("${config.file-to-load}")
+    private String filepath;*/
 
-    @Test
+    /*@Test
     public void getNonDuplicateMembers() throws Exception {
-        List<Member> data = memberImporter.importMembers(new File(filepath));
+        File uploadedFile = new File(filepath);
+        Object data = memberFileProcessor.processFile(new File(filepath));
         Member member = new Member();
         member.setId("101396885");
         member.setFirstName("ALVA");
@@ -37,6 +47,11 @@ public class MemberImporterTests {
         List<Member> testData = new ArrayList<>();
         testData.add(member);
         assertEquals(testData , data);
+    }*/
+
+    @Test
+    public void loadDataTest() {
+        assertNotEquals(fileController , null);
     }
 
 }
