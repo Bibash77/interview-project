@@ -70,9 +70,6 @@ public void setup() {
                 get("/api/load-data")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andReturn().getResponse();
-        Map<String, List<Member>> map = new ObjectMapper().convertValue(response.getContentAsString(), new TypeReference<Map<String, List<Member>>>() {
-        });
-        assertThat(map.size(), equalTo(0));
         assertThat(response.getStatus(), equalTo(HttpStatus.OK.value()));
     }
 
